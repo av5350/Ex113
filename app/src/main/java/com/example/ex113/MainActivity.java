@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         showView = (TextView) findViewById(R.id.showView);
         inputView = (EditText) findViewById(R.id.inputView);
 
+        stringText = "";
+
         readText();
     }
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public void readText()
     {
         try {
-            FileInputStream fis = openFileInput("data1.txt");
+            FileInputStream fis = openFileInput("data.txt");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             StringBuffer sb = new StringBuffer();
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 line = br.readLine();
             }
             stringText=sb.toString();
+            if (stringText.equals(null))
+                stringText = "";
             showView.setText(stringText);
             isr.close();
         } catch (IOException e) {
@@ -77,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         stringText += inputView.getText().toString() + " ";
 
         try {
-            FileOutputStream fos = openFileOutput("data1.txt",MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput("data.txt",MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter bw = new BufferedWriter(osw);
             bw.write(stringText);
