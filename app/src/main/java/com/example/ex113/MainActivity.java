@@ -20,6 +20,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/**
+ * The type Main activity.
+ *
+ * @author Itey Weintraub <av5350@bs.amalnet.k12.il>
+ * @version 1
+ * @since 16 /12/2020
+ * short description:
+ *      This activity let the user expereance with internal files (◉‿◉)
+ */
 public class MainActivity extends AppCompatActivity {
     String stringText;
     TextView showView;
@@ -34,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         inputView = (EditText) findViewById(R.id.inputView);
 
         readText();
-        showView.setText(stringText);
     }
 
+    /**
+     * Read the data.txt text file to get the old app run data.
+     */
     public void readText()
     {
         try {
@@ -50,12 +61,18 @@ public class MainActivity extends AppCompatActivity {
                 line = br.readLine();
             }
             stringText=sb.toString();
+            showView.setText(stringText);
             isr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Save the inputed text to the file (and to the TextView).
+     *
+     * @param view the view
+     */
     public void saveText(View view) {
         stringText += inputView.getText().toString();
 
@@ -65,18 +82,30 @@ public class MainActivity extends AppCompatActivity {
             BufferedWriter bw = new BufferedWriter(osw);
             bw.write(stringText);
             bw.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
         showView.setText(stringText);
+        inputView.setText("");
     }
 
+    /**
+     * Rest the TextView and EditText views to "".
+     *
+     * @param view the view
+     */
     public void restText(View view) {
-        stringText = "";
-        showView.setText(stringText);
+        inputView.setText("");
+        showView.setText("");
     }
 
+    /**
+     * Exit app(save this app run data and finish).
+     *
+     * @param view the view
+     */
     public void exitApp(View view) {
         saveText(view);
         finish();
