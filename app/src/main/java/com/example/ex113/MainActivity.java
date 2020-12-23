@@ -27,7 +27,7 @@ import java.io.OutputStreamWriter;
  * @version 1
  * @since 16 /12/2020
  * short description:
- *      This activity let the user expereance with internal files (◉‿◉)
+ *      This activity let the user experience with internal files (◉‿◉)
  */
 public class MainActivity extends AppCompatActivity {
     String stringText;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             StringBuffer sb = new StringBuffer();
             String line = br.readLine();
             while (line != null) {
-                sb.append(line+'\n');
+                sb.append(line);
                 line = br.readLine();
             }
             stringText=sb.toString();
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the view
      */
     public void saveText(View view) {
-        stringText += inputView.getText().toString();
+        stringText += inputView.getText().toString() + " ";
 
         try {
             FileOutputStream fos = openFileOutput("data.txt",MODE_PRIVATE);
