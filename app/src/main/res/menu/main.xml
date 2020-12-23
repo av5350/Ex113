@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Creadits"
-        android:orderInCategory="100" />
+        android:orderInCategory="100"
+        android:title="Home" />
 
     <item
-        android:orderInCategory="200"
-        android:title="Home" />
+        android:title="Creadits"
+        android:orderInCategory="200" />
 
 </menu>
