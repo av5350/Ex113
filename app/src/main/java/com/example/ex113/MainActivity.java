@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void readText()
     {
         try {
-            FileInputStream fis = openFileInput("data.txt");
+            FileInputStream fis = openFileInput("data1.txt");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             StringBuffer sb = new StringBuffer();
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         stringText += inputView.getText().toString() + " ";
 
         try {
-            FileOutputStream fos = openFileOutput("data.txt",MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput("data1.txt",MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter bw = new BufferedWriter(osw);
             bw.write(stringText);
